@@ -26,17 +26,18 @@ used for diff rendering when present.
 
 ## Install
 
-With **zpm** (zshrs's package manager):
-
 ```sh
-zpm add MenkeTechnologies/zshrs-git-fuzzy
+zpm load MenkeTechnologies/zshrs-git-fuzzy
 ```
 
-`zpm` clones the repo, runs `cargo build --release`, and `zmodload -R`s the
-resulting `libgit_fuzzy` — then `gf` is a live command. To load it at startup,
-add `zpm load git-fuzzy` to your `.zshrc`.
+Put that one line in your `.zshrc`.
+[zpm](https://github.com/MenkeTechnologies/zshrs/blob/main/docs/ZPM.md),
+zshrs's package manager, installs the plugin on the first shell start — clones
+it, runs `cargo build --release`, and `zmodload -R`s the resulting
+`libgit_fuzzy` — then loads it from the store, zero-network, on every start
+after. No separate install step; `gf` is a live command.
 
-## Build manually
+### Manual build
 
 ```sh
 cargo build --release
