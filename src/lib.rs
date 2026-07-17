@@ -813,3 +813,54 @@ declare_plugin! {
         "git-fuzzy" => gf,
     },
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn lc_lowercases() {
+        assert_eq!(lc("Ctrl-A"), "ctrl-a");
+    }
+
+    #[test]
+    fn is_vertical_threshold() {
+        assert!(is_vertical(80, 50)); // 800 < 1000
+        assert!(!is_vertical(200, 50)); // 2000 !< 1000
+        assert!(!is_vertical(100, 50)); // exactly 2.0 ratio -> not vertical
+    }
+
+    #[test]
+    fn preview_window_layout() {
+        // vertical: bottom, pct = clamp(100 - (4000+5H)/H)
+        assert_eq!(
+            preview_window(80, 50, false),
+            "--preview-window=bottom:50%:nohidden"
+        );
+        // horizontal: right, pct = clamp(100 - (7000+11W)/W)
+        assert_eq!(
+            preview_window(200, 50, true),
+            "--preview-window=right:54%:hidden"
+        );
+    }
+
+    #[test]
+    fn small_screen_rules() {
+        assert!(small_screen(80, 50)); // vertical, h<=60
+        assert!(!small_screen(80, 61)); // vertical, h>60
+        assert!(small_screen(200, 30)); // horizontal, h<=30
+        assert!(!small_screen(200, 31)); // horizontal, h>30
+    }
+
+    #[test]
+    fn shell_quote_escapes_single_quotes() {
+        assert_eq!(shell_quote("plain"), "'plain'");
+        assert_eq!(shell_quote("it's"), r"'it'\''s'");
+    }
+
+    #[test]
+    fn strip_rename_keeps_destination() {
+        assert_eq!(strip_rename("old/name -> new/name"), "new/name");
+        assert_eq!(strip_rename("unrenamed/path"), "unrenamed/path");
+    }
+}

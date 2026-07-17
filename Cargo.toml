@@ -7,7 +7,7 @@ description = "git-fuzzy status ported to a native zshrs plugin (self-reentrant 
 
 [lib]
 name = "git_fuzzy"
-crate-type = ["cdylib"]
+crate-type = ["cdylib", "rlib"]
 
 [dependencies]
 znative = "0.12"
