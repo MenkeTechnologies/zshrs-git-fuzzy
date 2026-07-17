@@ -1,0 +1,13 @@
+[package]
+name = "git_fuzzy"
+version = "0.1.0"
+edition = "2021"
+publish = false
+description = "git-fuzzy status ported to a native zshrs plugin (self-reentrant fzf UI)"
+
+[lib]
+name = "git_fuzzy"
+crate-type = ["cdylib"]
+
+[dependencies]
+zshrs-plugin = { git = "https://github.com/MenkeTechnologies/zshrs" }
