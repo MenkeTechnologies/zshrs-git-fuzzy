@@ -1,6 +1,6 @@
 [plugin]
 name = "git-fuzzy"
-version = "0.1.0"
+version = "0.1.1"
 description = "git-fuzzy `status` ported to a native zshrs plugin — self-reentrant fzf UI"
 
 [native]
