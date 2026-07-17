@@ -312,7 +312,9 @@ fn gf(host: &Host, args: &Args) -> c_int {
         ["--helper", sub, tail @ ..] => helper_dispatch(host, sub, tail),
         ["status", ..] => gf_status(host),
         [cmd, ..] => {
-            host.print(&format!("gf: `{cmd}` not ported (this example covers `status`)\n"));
+            host.print(&format!(
+                "gf: `{cmd}` not ported (this example covers `status`)\n"
+            ));
             1
         }
     }
@@ -346,7 +348,12 @@ fn gf_status(host: &Host) -> c_int {
     };
     let reload = format!("reload-sync({})", helper_cmd("status_menu_content", ""));
     let action_reload = format!("{reload}+clear-multi");
-    let expect = format!("{},{},{}", lc(&keys.edit), lc(&keys.commit), lc(&keys.add_patch));
+    let expect = format!(
+        "{},{},{}",
+        lc(&keys.edit),
+        lc(&keys.commit),
+        lc(&keys.add_patch)
+    );
 
     let inspect_bind = format!(
         "{}:execute({})",
@@ -370,7 +377,10 @@ fn gf_status(host: &Host) -> c_int {
         .arg(&header)
         .arg("--expect")
         .arg(&expect)
-        .arg(format!("--preview={}", helper_cmd("status_preview_content", "{1} {2} {4}")))
+        .arg(format!(
+            "--preview={}",
+            helper_cmd("status_preview_content", "{1} {2} {4}")
+        ))
         .arg(format!("--bind={}:toggle-preview-wrap", lc(&keys.wrap)))
         .arg(format!("--bind={}:select-all", lc(&keys.select_all)))
         .arg(format!("--bind={}:deselect-all", lc(&keys.select_none)))
@@ -582,7 +592,16 @@ fn helper_status_diff(args: &[&str]) -> c_int {
     let content = if status == "??" {
         std::fs::read_to_string(file).unwrap_or_default()
     } else {
-        let mut da = vec!["--no-pager", "-c", "color.ui=always", "diff", "HEAD", "-M", "--", file];
+        let mut da = vec![
+            "--no-pager",
+            "-c",
+            "color.ui=always",
+            "diff",
+            "HEAD",
+            "-M",
+            "--",
+            file,
+        ];
         if !std::path::Path::new(file).exists() && !renamed.is_empty() {
             da.push(renamed);
         }
