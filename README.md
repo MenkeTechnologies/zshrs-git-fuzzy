@@ -19,7 +19,7 @@
 
 [git-fuzzy](https://github.com/bigH/git-fuzzy) — the full-screen `fzf`-driven `git` interface — ported to a **native [zshrs](https://github.com/MenkeTechnologies/zshrs) plugin**. This port covers the `status` command end-to-end.
 
-### [`zshrs`](https://github.com/MenkeTechnologies/zshrs) &middot; [`znative`](https://github.com/MenkeTechnologies/zshrs/blob/main/docs/ZPM.md) &middot; [`upstream`](https://github.com/bigH/git-fuzzy)
+### [`zshrs`](https://github.com/MenkeTechnologies/zshrs) &middot; [`znative`](https://github.com/MenkeTechnologies/zshrs/blob/main/docs/ZNATIVE.md) &middot; [`upstream`](https://github.com/bigH/git-fuzzy)
 
 ---
 
@@ -47,7 +47,7 @@ Requires `git` and `fzf` (>= 0.71) on `PATH`. `delta` / `diff-so-fancy` are used
 znative load MenkeTechnologies/zshrs-git-fuzzy
 ```
 
-Put that one line in your `.zshrc`. [znative](https://github.com/MenkeTechnologies/zshrs/blob/main/docs/ZPM.md), zshrs's package manager, installs the plugin on the first shell start — clones it, runs `cargo build --release`, and `zmodload -R`s the resulting `libgit_fuzzy` — then loads it from the store, zero-network, on every start after. No separate install step.
+Put that one line in your `.zshrc`. [znative](https://github.com/MenkeTechnologies/zshrs/blob/main/docs/ZNATIVE.md), zshrs's package manager, installs the plugin on the first shell start — clones it, runs `cargo build --release`, and `zmodload -R`s the resulting `libgit_fuzzy` — then loads it from the store, zero-network, on every start after. No separate install step.
 
 ### Manual build
 
