@@ -21,6 +21,8 @@
 //!
 //! Requires `git` and `fzf` (>= 0.71) on PATH, like git-fuzzy. `delta` /
 //! `diff-so-fancy` are used for diff rendering when present.
+#![allow(clippy::not_unsafe_ptr_arg_deref)]
+#![allow(rustdoc::private_intra_doc_links)]
 
 use std::io::{Read, Write};
 use std::os::raw::{c_char, c_int, c_void};
