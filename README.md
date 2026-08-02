@@ -61,11 +61,35 @@ gf status
 
 ## [0x02] COMMANDS
 
-| command     | what it does                              |
-| ----------- | ----------------------------------------- |
-| `gf status` | interactive `git status` UI               |
+| command             | what it does                                        |
+| ------------------- | --------------------------------------------------- |
+| `gf status`         | interactive `git status` UI                         |
+| `gf` / `gf menu`    | same as `gf status` — the upstream menu is not ported yet |
+| `git-fuzzy …`       | second registered name for the same builtin         |
 
 Inside the `status` view: live diff preview, full-screen inspect, and key-bindings to stage / unstage / discard / amend / patch / commit / edit, plus a `--listen`-driven watcher that live-reloads on repo changes.
+
+### Environment
+
+Set `GF_STATUS_WATCH=0` to turn off that live-reload watcher.
+
+Every key-binding is overridable; the defaults match upstream git-fuzzy:
+
+| variable                                | default |
+| --------------------------------------- | ------- |
+| `GIT_FUZZY_STATUS_ADD_KEY`              | `Alt-S` |
+| `GIT_FUZZY_STATUS_ADD_PATCH_KEY`        | `Alt-P` |
+| `GIT_FUZZY_STATUS_RESET_KEY`            | `Alt-R` |
+| `GIT_FUZZY_STATUS_DISCARD_KEY`          | `Alt-U` |
+| `GIT_FUZZY_STATUS_COMMIT_KEY`           | `Alt-C` |
+| `GIT_FUZZY_STATUS_AMEND_KEY`            | `Alt-M` |
+| `GIT_FUZZY_STATUS_EDIT_KEY`             | `Alt-E` |
+| `GIT_FUZZY_INSPECT_KEY`                 | `Alt-I` |
+| `GIT_FUZZY_SELECT_ALL_KEY`              | `Alt-A` |
+| `GIT_FUZZY_SELECT_NONE_KEY`             | `Alt-D` |
+| `GIT_FUZZY_PREVIEW_WRAP_KEY`            | `Alt-W` |
+| `GIT_FUZZY_PREVIEW_SIZE_INCREASE_KEY`   | `Alt-=` |
+| `GIT_FUZZY_PREVIEW_SIZE_DECREASE_KEY`   | `Alt--` |
 
 ---
 
