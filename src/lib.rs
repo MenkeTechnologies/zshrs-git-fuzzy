@@ -10,7 +10,7 @@
 //!
 //! Here every command AND helper is a builtin in this one plugin. fzf's
 //! binds reach the helpers through a small generated shim (see
-//! [`helper_shim`]) that runs `zshrs -fc 'zmodload -R <self>; gf --helper
+//! the private `helper_shim`) that runs `zshrs -fc 'zmodload -R <self>; gf --helper
 //! <sub> <args>'` — one dlopen of an mmap'd dylib instead of sourcing a
 //! library tree.
 //!
@@ -22,7 +22,6 @@
 //! Requires `git` and `fzf` (>= 0.71) on PATH, like git-fuzzy. `delta` /
 //! `diff-so-fancy` are used for diff rendering when present.
 #![allow(clippy::not_unsafe_ptr_arg_deref)]
-#![allow(rustdoc::private_intra_doc_links)]
 
 use std::io::{Read, Write};
 use std::os::raw::{c_char, c_int, c_void};
