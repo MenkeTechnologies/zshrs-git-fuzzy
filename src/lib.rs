@@ -808,7 +808,7 @@ fn fzf_post(port: u16, action: &str) -> bool {
 
 declare_plugin! {
     name: "git-fuzzy",
-    version: "0.1.5",
+    version: "0.1.6",
     builtins: {
         "gf"        => gf,
         "git-fuzzy" => gf,
